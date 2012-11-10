@@ -1,2 +1,2 @@
-exercise-comscore-vechicles
+exercise-comscore-vehicles
 ===========================
