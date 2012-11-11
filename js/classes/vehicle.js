@@ -2,6 +2,7 @@
  * Vehicle class declaration
  *
  * @depends events
+ * @depends config
  */
 
 var Vehicle = function(options) {
@@ -17,7 +18,7 @@ var Vehicle = function(options) {
 	// How much units does the vehice carry per 100 km
 	this.volumeUnits    = options.volumeUnits;
 	// The speed of the vehicle in km per hour
-	this.speed = 36000;
+	this.speed = 100;
 	// time interval between the chek points
 	this.timeoutStep = 2;
 
@@ -46,7 +47,7 @@ Vehicle.prototype.run = function(distance) {
 
 Vehicle.prototype.updateState = function() {
 	// a distance, that was gone during the timeout
-	var distance = this.timeoutStep * (this.speed / 3600);
+	var distance = this.timeoutStep * config.scaleTime * (this.speed / 3600);
 
 	this.distanceGone += distance;
 	this.distanceCarriedUnits += distance;
@@ -55,6 +56,8 @@ Vehicle.prototype.updateState = function() {
 	this.usageFuel += distance * (this.consumtionFuel / 100);
 	// adding a oil usage, that was spend during the timeout
 	this.usageOil += distance * (this.usageOil / 100);
+
+	// TODO: move this logic to the inheritor
 
 	// we'll update this value not more often than every 100 km
 	if (this.distanceCarriedUnits >= 100) {
