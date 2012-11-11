@@ -4,11 +4,44 @@
 	<meta   charset="utf-8" />
 	<script src="js/libs/bind.js"      ></script>
 	<script src="js/libs/events.js"    ></script>
+	<script src="js/libs/extend.js"    ></script>
 	<script src="js/classes/vehicle.js"></script>
+	<script src="js/classes/vehicleTransport.js"></script>
 	<script src="js/config.js"></script>
 	<script src="js/app.js"></script>
 	<!-- TODO: join all scripts to one file -->
 </head>
 <body>
+	<div class="panel-control">
+		<form>
+			<fieldset>
+				<input name="type-vehicle" id="type-vehicle-car" value="car" type="radio" />
+				<label for="type-vehicle-car">car</label>
+				<input name="type-vehicle" id="type-vehicle-bus" value="bus" type="radio" />
+				<label for="type-vehicle-bus">bus</label>
+				<input name="type-vehicle" id="type-vehicle-track" value="track" type="radio" />
+				<label for="type-vehicle-track">track</label>
+				<input class="button-start" type="button" value="start" />
+				<input class="button-stop"  type="button" value="stop" />
+			</fieldset>
+		</form>
+	</div>
+	<div class="indicator">
+		<div class="bar-progress"></div>
+		<table>
+			<tr class="fuel">
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="oil">
+				<td></td>
+				<td></td>
+			</tr>
+			<tr class="load">
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
