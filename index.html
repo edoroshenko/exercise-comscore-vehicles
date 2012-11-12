@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>The vehicle application</title>
+	<link href="css/master.css" rel="stylesheet" />
+	<meta   charset="utf-8" />
+	<script src="js/libs/events.js"         > </script>
+	<script src="js/libs/helpers.js"        > </script>
+	<script src="js/classes/vehicle.js"     > </script>
+	<script src="js/classes/vehicleTransport.js"> </script>
+	<script src="js/classes/vehicleCar.js"  > </script>
+	<script src="js/classes/vehicleBus.js"  > </script>
+	<script src="js/classes/vehicleTruck.js"> </script>
+	<script src="js/views/viewIndicator.js" > </script>
+	<script src="js/views/viewPanelControl.js" > </script>
+	<script src="js/config.js"> </script>
+	<!-- TODO: join all scripts to one file -->
+</head>
+<body>
+	<form class="panel-control">
+		<fieldset>
+			<legend>Vehicle type</legend>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-car" value="car" type="radio" checked="checked" />
+			<label for="type-vehicle-car">car</label>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-bus" value="bus" type="radio" />
+			<label for="type-vehicle-bus">bus</label>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-truck" value="truck" type="radio" />
+			<label for="type-vehicle-truck">truck</label>
+		</fieldset>
+		<fieldset>
+			<legend>Distance</legend>
+			<input type="text" class="panel-control__input-distance" value="10000" />
+			<span class="panel-control__error panel-control__error-distance hidden">Incorrect distance. Integer expected</span>
+		</fieldset>
+		<input class="panel-control__button panel-control__button_start" type="button" value="start" />
+		<input class="panel-control__button panel-control__button_stop hidden"  type="button" value="stop" />
+	</form>
+	<div class="indicator">
+		<div class="bar-progress">
+			<div class="bar-progress__line"></div>
+			<div class="bar-progress__distance"></div>
+		</div>
+		<table class="report">
+			<tr class="report__line-fuel">
+				<td class="report__cell report__cell-title">Fuel consumption</td>
+				<td class="report__cell report__cell-value"></td>
+			</tr>
+			<tr class="report__line-oil">
+				<td class="report__cell report__cell-title">Oil consumption</td>
+				<td class="report__cell report__cell-value"></td>
+			</tr>
+			<tr class="report__line-passengers">
+				<td class="report__cell report__cell-title">Total number of passenger carried</td>
+				<td class="report__cell report__cell-value"></td>
+			</tr>
+			<tr class="report__line-load">
+				<td class="report__cell report__cell-title">Total load carried</td>
+				<td class="report__cell report__cell-value"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script src="js/app.js"> </script>
+</html>

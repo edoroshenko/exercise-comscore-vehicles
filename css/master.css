@@ -1,0 +1,58 @@
+.panel-control {
+	width: 500px;
+}
+
+.panel-control__button {
+	margin-top: 20px;
+}
+
+.panel-control__error {
+	color: #f77;
+}
+
+.indicator {
+	width: 500px;
+	margin-top: 20px;
+}
+
+.bar-progress {
+	position: relative;
+	border: 20px solid #eee;
+	height: 20px;
+	text-align: center;
+}
+
+.bar-progress .bar-progress__line {
+	position: absolute;
+	left: 0;
+	top:  0;
+	height: 20px;
+	background-color: #ccc;
+}
+
+.bar-progress .bar-progress__distance {
+	position: absolute;
+	left: 0;
+	top:  0;
+	padding-top: 1px;
+	height: 18px;
+	width:  100%;
+}
+
+.report {
+	margin-top: 20px;
+}
+
+.report .report__cell-title {
+	width: 130px;
+	text-align: left;
+}
+
+.report .report__cell-value {
+	width: 90px;
+	text-align: right;
+}
+
+.hidden {
+	display: none;
+}
