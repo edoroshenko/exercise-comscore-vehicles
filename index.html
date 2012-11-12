@@ -1,52 +1,58 @@
 <!doctype html>
 <html>
 <head>
+	<title>The vehicle application</title>
+	<link href="css/master.css" rel="stylesheet" />
 	<meta   charset="utf-8" />
-	<script src="js/libs/bind.js"      ></script>
-	<script src="js/libs/events.js"    ></script>
-	<script src="js/libs/extend.js"    ></script>
-	<script src="js/classes/vehicle.js"></script>
-	<script src="js/classes/vehicleTransport.js"></script>
-	<script src="js/classes/vehicleCar.js"></script>
-	<script src="js/classes/vehicleBus.js"></script>
-	<script src="js/classes/vehicleTrack.js"></script>
-	<script src="js/config.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/libs/events.js"         > </script>
+	<script src="js/libs/helpers.js"        > </script>
+	<script src="js/classes/vehicle.js"     > </script>
+	<script src="js/classes/vehicleTransport.js"> </script>
+	<script src="js/classes/vehicleCar.js"  > </script>
+	<script src="js/classes/vehicleBus.js"  > </script>
+	<script src="js/classes/vehicleTrack.js"> </script>
+	<script src="js/views/viewIndicator.js" > </script>
+	<script src="js/views/viewPanelControl.js" > </script>
+	<script src="js/config.js"> </script>
 	<!-- TODO: join all scripts to one file -->
 </head>
 <body>
 	<div class="panel-control">
 		<form>
-			<fieldset>
-				<input name="type-vehicle" id="type-vehicle-car" value="car" type="radio" />
-				<label for="type-vehicle-car">car</label>
-				<input name="type-vehicle" id="type-vehicle-bus" value="bus" type="radio" />
-				<label for="type-vehicle-bus">bus</label>
-				<input name="type-vehicle" id="type-vehicle-track" value="track" type="radio" />
-				<label for="type-vehicle-track">track</label>
-				<input class="button-start" type="button" value="start" />
-				<input class="button-stop"  type="button" value="stop" />
-			</fieldset>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-car" value="car" type="radio" checked="checked" />
+			<label for="type-vehicle-car">car</label>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-bus" value="bus" type="radio" />
+			<label for="type-vehicle-bus">bus</label>
+			<input class="panel-control__input-type-vehicle" name="type-vehicle" id="type-vehicle-track" value="track" type="radio" />
+			<label for="type-vehicle-track">track</label>
+			<input class="panel-control__button panel-control__button_start" type="button" value="start" />
+			<input class="panel-control__button panel-control__button_stop"  type="button" value="stop" />
 		</form>
 	</div>
 	<div class="indicator">
 		<div class="bar-progress">
-			<div class="bar-progress__inner"></div>
+			<div class="bar-progress__line"></div>
+			<div class="bar-progress__distance"></div>
 		</div>
-		<table>
-			<tr class="fuel">
-				<td></td>
-				<td></td>
+		<table class="report">
+			<tr class="report__line-fuel">
+				<td class="report__cell report__cell-title">Fuel consumption</td>
+				<td class="report__cell report__cell-value"></td>
 			</tr>
-			<tr class="oil">
-				<td></td>
-				<td></td>
+			<tr class="report__line-oil">
+				<td class="report__cell report__cell-title">Oil consumption</td>
+				<td class="report__cell report__cell-value"></td>
 			</tr>
-			<tr class="load">
-				<td></td>
-				<td></td>
+			<tr class="report__line-passengers">
+				<td class="report__cell report__cell-title">Total number of passenger carried</td>
+				<td class="report__cell report__cell-value"></td>
+			</tr>
+			<tr class="report__line-load">
+				<td class="report__cell report__cell-title">Total load carried</td>
+				<td class="report__cell report__cell-value"></td>
 			</tr>
 		</table>
 	</div>
 </body>
+<script src="js/app.js"> </script>
 </html>

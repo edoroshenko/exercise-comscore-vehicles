@@ -1,4 +1,4 @@
 var config = {
 	// a time coefficient
-	scaleTime: 1000
+	scaleTime: 10000
 };

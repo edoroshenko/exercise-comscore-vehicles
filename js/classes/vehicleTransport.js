@@ -10,8 +10,6 @@ var VehicleTransport = function(options) {
 
 	this.type = 'transport';
 
-	// the name of carried units
-	this.nameUnit       = options.nameUnit;
 	// How much units does the vehice carry per 100 km
 	this.volumeUnits    = options.volumeUnits;
 };
@@ -24,14 +22,21 @@ VehicleTransport.prototype.resetCounters = function() {
 	this.distanceCarriedUnits = 0;
 };
 
-VehicleTransport.prototype.updateCounters = function(distance) {
+VehicleTransport.prototype.updateCounters = function() {
 	Vehicle.prototype.updateCounters.apply(this, arguments);
 
-	this.distanceCarriedUnits += distance;
+	this.distanceCarriedUnits += this.distanceStep;
 
 	// we'll update this value not more often than every 100 km
 	if (this.distanceCarriedUnits >= 100) {
 		this.carriedUnits += this.volumeUnits;
 		this.distanceCarriedUnits = 0;
 	}
+};
+
+VehicleTransport.prototype.getState = function() {
+	var state = Vehicle.prototype.getState.apply(this, arguments);
+	state.carriedUnits = this.carriedUnits;
+
+	return state;
 };

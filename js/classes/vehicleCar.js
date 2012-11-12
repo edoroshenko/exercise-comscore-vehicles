@@ -4,6 +4,7 @@ var VehicleCar = function() {
 		consumtionOil:  0.3
 	});
 
+	this.type  = 'car';
 	this.speed = 120;
 };
 
