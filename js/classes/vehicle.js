@@ -46,12 +46,12 @@ Vehicle.prototype.run = function(distance) {
 	this.pointerTimeout = window.setTimeout(this.updateState.bind(this), this.timeoutStep * 1000);
 };
 
-Vehicle.prototype.updateCounters = function() {
-	this.distanceGone += this.distanceStep;
+Vehicle.prototype.updateCounters = function(distance) {
+	this.distanceGone += distance;
 	// adding a fuel usage, that was spend during the timeout
-	this.usageFuel += this.distanceStep * (this.consumtionFuel / 100);
+	this.usageFuel += distance * (this.consumtionFuel / 100);
 	// adding a oil usage, that was spend during the timeout
-	this.usageOil += this.distanceStep * (this.consumtionOil / 100);
+	this.usageOil += distance * (this.consumtionOil / 100);
 };
 
 Vehicle.prototype.updateState = function() {

@@ -81,10 +81,10 @@ ViewIndicator.prototype.update = function(e, params) {
 	if (Math.round(this.distanceLoad) >= 5000) {
 		this.distanceLoad = this.distanceLoad - 5000;
 		if ('bus' === params.type) {
-			this.valuePassengers.innerHTML = params.carriedUnits;
+			this.valuePassengers.innerHTML = parseInt(params.carriedUnits);
 		}
 		if ('track' === params.type) {
-			this.valueLoad.innerHTML = params.carriedUnits + 'tons';
+			this.valueLoad.innerHTML = parseInt(params.carriedUnits) + 'tons';
 		}
 	}
 };

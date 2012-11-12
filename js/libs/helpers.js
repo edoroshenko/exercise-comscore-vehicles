@@ -22,3 +22,7 @@ function extend(subClass, superClass) {
     F.prototype = superClass.prototype;
     subClass.prototype = new F();
 }
+
+function trim(str) {
+	return str.replace(/^\s*/, '').replace(/\s*$/, '');
+}

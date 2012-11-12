@@ -3,7 +3,8 @@ var panel = new ViewPanelControl(document.querySelector('.panel-control'));
 
 events.bind('panel-control.start', function(e, params) {
 	var vehicle = Vehicle.createInstance(params.type);
-	vehicle.run(1000);
+
+	vehicle.run(params.distance);
 
 	var onStop = function() {
 		vehicle.stop();
