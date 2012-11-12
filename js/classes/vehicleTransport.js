@@ -1,10 +1,9 @@
 /**
- * Vehicle class declaration
+ * Vehicle Transport constructor
  *
- * @depends vehicle
+ * @depends Vehicle
  * @depends extend
  */
-
 var VehicleTransport = function(options) {
 	Vehicle.apply(this, arguments);
 
@@ -16,16 +15,24 @@ var VehicleTransport = function(options) {
 
 extend(VehicleTransport, Vehicle);
 
+/**
+ * Sets the initial values to all counters,
+ * including the specific logic for the transport vehicles
+ */
 VehicleTransport.prototype.resetCounters = function() {
 	Vehicle.prototype.resetCounters.apply(this, arguments);
 	this.carriedUnits = 0;
 	this.distanceCarriedUnits = 0;
 };
 
-VehicleTransport.prototype.updateCounters = function() {
+/**
+ * Sets the current values of the counters,
+ * including the specific logic for the transport vehicles
+ */
+VehicleTransport.prototype.updateCounters = function(distance) {
 	Vehicle.prototype.updateCounters.apply(this, arguments);
 
-	this.distanceCarriedUnits += this.distanceStep;
+	this.distanceCarriedUnits += distance;
 
 	// we'll update this value not more often than every 100 km
 	if (this.distanceCarriedUnits >= 100) {
@@ -34,6 +41,10 @@ VehicleTransport.prototype.updateCounters = function() {
 	}
 };
 
+/**
+ * Returns the object representation of the vehicle state
+ * including the specific data for the transport vehicles
+ */
 VehicleTransport.prototype.getState = function() {
 	var state = Vehicle.prototype.getState.apply(this, arguments);
 	state.carriedUnits = this.carriedUnits;

@@ -1,5 +1,5 @@
 /**
- * Vehicle class declaration
+ * Vehicle constructor
  *
  * @depends events
  * @depends config
@@ -21,16 +21,23 @@ var Vehicle = function(options) {
 	this.pointerTimeout = null;
 
 	this.resetCounters();
-
-	this.distance = 0;
 };
 
+/**
+ * Sets the initial values to all counters
+ */
 Vehicle.prototype.resetCounters = function() {
 	this.distanceGone  = 0;
 	this.usageFuel     = 0;
 	this.usageOil      = 0;
+	this.distance      = 0;
+	this.distanceStep  = 0;
 };
 
+/**
+ * Runs the vehicle
+ * @param Number distance
+ */
 Vehicle.prototype.run = function(distance) {
 	if (this.pointerTimeout) {
 		return;
@@ -46,6 +53,10 @@ Vehicle.prototype.run = function(distance) {
 	this.pointerTimeout = window.setTimeout(this.updateState.bind(this), this.timeoutStep * 1000);
 };
 
+/**
+ * Sets the current values of the counters
+ * @param Number distance - a number of kilometers was gone at the current step
+ */
 Vehicle.prototype.updateCounters = function(distance) {
 	this.distanceGone += distance;
 	// adding a fuel usage, that was spend during the timeout
@@ -54,6 +65,9 @@ Vehicle.prototype.updateCounters = function(distance) {
 	this.usageOil += distance * (this.consumtionOil / 100);
 };
 
+/**
+ * Updates the step of the instance
+ */
 Vehicle.prototype.updateState = function() {
 	// a distance, that was gone during the timeout
 	this.distanceStep = this.timeoutStep * config.scaleTime * (this.speed / 3600);
@@ -70,6 +84,9 @@ Vehicle.prototype.updateState = function() {
 	}
 };
 
+/**
+ * Returns the object representation of the vehicle state
+ */
 Vehicle.prototype.getState = function() {
 	return {
 		type:          this.type,
@@ -80,6 +97,9 @@ Vehicle.prototype.getState = function() {
 	};
 };
 
+/**
+ * Stops the vehicle
+ */
 Vehicle.prototype.stop = function() {
 	window.clearTimeout(this.pointerTimeout);
 	this.resetCounters();
@@ -87,14 +107,18 @@ Vehicle.prototype.stop = function() {
 	events.trigger('vehicle.stopped', this.getState());
 };
 
+/**
+ * Static factory method
+ * @param String type - a type of a vehicle to instantiate
+ */
 Vehicle.createInstance = function(type) {
 	switch(type) {
 		case 'car':
 			return new VehicleCar();
 		case 'bus':
 			return new VehicleBus();
-		case 'track':
-			return new VehicleTrack();
+		case 'truck':
+			return new VehicleTruck();
 		default:
 			return null;
 	}

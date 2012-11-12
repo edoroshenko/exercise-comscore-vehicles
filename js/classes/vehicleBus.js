@@ -1,3 +1,8 @@
+/**
+ * Vehicle Bus constructor
+ *
+ * @depends VehicleTransport
+ */
 var VehicleBus = function() {
 	VehicleTransport.call(this, {
 		consumtionFuel: 15,

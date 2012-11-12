@@ -1,3 +1,7 @@
+/**
+ * Control panel view constructor
+ * @param Node node
+ */
 var ViewPanelControl = function(node) {
 	this.node = node;
 	this.inputsType = node.querySelectorAll('.panel-control__input-type-vehicle');
@@ -10,6 +14,9 @@ var ViewPanelControl = function(node) {
 	this.bindAll();
 };
 
+/**
+ * Binds some callbacks to a DOM events
+ */
 ViewPanelControl.prototype.bindAll = function() {
 	this.buttonStart.addEventListener('click', function() {
 		if (!this.isValid()) {
@@ -24,6 +31,9 @@ ViewPanelControl.prototype.bindAll = function() {
 	}.bind(this));
 };
 
+/**
+ * Returns true if the form valid
+ */
 ViewPanelControl.prototype.isValid = function() {
 	if (!this.getType()) {
 		return false;
@@ -36,10 +46,16 @@ ViewPanelControl.prototype.isValid = function() {
 	return true;
 };
 
+/**
+ * Returns a distance typed
+ */
 ViewPanelControl.prototype.getDistance = function() {
 	return parseInt(trim(this.inputDistance.value), 10);
 };
 
+/**
+ * Returns a type selected
+ */
 ViewPanelControl.prototype.getType = function() {
 	var i;
 	var input;
@@ -54,6 +70,9 @@ ViewPanelControl.prototype.getType = function() {
 	return null;
 };
 
+/**
+ * Sets an initial state to the view
+ */
 ViewPanelControl.prototype.reset = function() {
 	removeClass(this.buttonStart, 'hidden');
 
@@ -66,6 +85,9 @@ ViewPanelControl.prototype.reset = function() {
 	}
 };
 
+/**
+ * Sets a disabled state to the view
+ */
 ViewPanelControl.prototype.onRun = function() {
 	addClass(this.buttonStart, 'hidden');
 	removeClass(this.buttonStop, 'hidden');

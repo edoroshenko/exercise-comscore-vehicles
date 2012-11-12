@@ -1,3 +1,8 @@
+/**
+ * Vehicle Car constructor
+ *
+ * @depends Vehicle
+ */
 var VehicleCar = function() {
 	Vehicle.call(this, {
 		consumtionFuel: 5,
